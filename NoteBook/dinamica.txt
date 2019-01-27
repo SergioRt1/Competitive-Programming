@@ -1,0 +1,75 @@
+PROGRAMACIÓN DINÁMICA
+Sufijo común más largo (Longest common suffix) {O(n*m) }
+Sufijo común más largo de dos cadenas a[0..n-1),b[0..m-1]:
+    answer=sufcml(n,m)
+    sufcml(i,j) = sufcml (i-1,j-1)+1   si i>0^j>0^a[i-1]=b[j-1]
+                = 0                    de lo contrario
+Subcadena común más larga (Longest common substring) {O(n*m)}
+Subcadena común más larga de dos cadenas a[O..n-1)],[0..m-1]:
+    answer=(max,i,j | l<=i<=n^l<=j<=m:sufcml(i,j))
+
+Subsecuencia común más larga (Longest common subsequence) {0(n*m) }
+Subsecuencia común más larga de dos cadenas a[O..n-1),b[0..m-1]:
+    answer=subcml(n,m)
+    subcml(i,j) = 0                     si i=0 v j=0
+                = subcml(i-1,-1)+1      si i>0^j>0^a(i-1)=b[j-1)
+                = subcml(i,j-1) max subcml(i-1,j) si i>0^j>O ^ a[i-1]!=b[j-1]
+Supersecuencia común más corta (Shortest common supersequence) {0(n*m) }
+Supersecuencia común más corta de dos cadenas aso..n-1),b[0..m-1]:
+    answer=subcmc (n,m)=n+m- subcml(n,m)
+    subcmc(i,j) = i max j                   si i=0 v j=0
+                = subcmc(i-1,j-1)+1         si i>0^j>0^a(i-1)=b[j-1]
+                = 1+(subcmc(i, j-1) min subcmc(i-1,j)) si i>0^j>0^a[i-1]!=b[j-1]
+Distancia de Levenshtein {0 (n*m)}
+Distancia de edición entre dos cadenas alo...n-11.bro..m-11 (mínimo número de moda done! inserciones y eliminaciones para transformar una cadena en otra):
+    answer=dl(n, m)
+    dl(i,j) = i max j          si i=0vj=0
+            = (dl(i, j-1)+1) min| (dl(i-1, j)+1) min| dl(i-1,j-1)   si i>0^j>0^ a[i-1]=b[j-1]
+            = (dl(i, j-1)+1) min| (dl (i-1, j)+1) min| (dl(i-1,j-1)+1) si i>0^j>0^a[i-1]!=[j-1]
+Problema de la pavimentación {O(n*m)}
+Número de maneras de pavimentar un camino de dimensiones lxn con losas de dimensiones 1x[1..m]:
+    answer=nmpc(n)
+    nmpc (i) = 1        si i=0
+                = (Sum(k|1<=k<=m min| i:nmpc(i-k)) si i>0
+Mínimo número de monedas para retornar un cambio (Coin change) {O(x*n)}
+Mínimo número de monedas con denominaciones d[0],d[1],...,d(n-1) para devolver una cantidad X:
+    answer=mnmc(x)
+    mnmc (C) = 0        si c=0
+            = min(k|0<=k<n^d[k]<=c:mnmc(c-d[k])) +1 si c>0 donde la identidad de min| es oo
+Número de maneras para retornar un cambio con monedas (Coin counting) {0(x*n)}
+Número de maneras para dar una cantidad x con monedas de denominaciones d[0),d[1],...,d[n-1]:
+    answer=nmrc(x,n)
+    nmrc(c,i) = 1       si c=0
+            = 0         si c>0^i=0
+            = nmrc(c,i-1)   si c>0^i>0^d[i-1]>c
+            = nmrc(c,i-1)+nmrc(c-d[i-1],i)  si c>0^i>0^d[i-1]<=c
+Decidir si algunos números de una lista de naturales suman un valor {0(x*n)}
+Decidir si algunos elementos de un arreglo de naturales d[o..n-1) suman una cantidad natural x:
+    answer=aean(x,n)
+    aean(c,i) = true
+si c=0 = false
+si c>^i=0 = aean (c,i-1)
+si c>^i>Qad[i-1]> = aean(c,i-1) vaean(c-d[i-1],i-1) si c>^i>oad[i-1]sc Problema del morral {O (m*n)} Se tienen n> objetos con pesos p[0].p(1),..., p[n-1] y utilidades u(O), u(1),..., u(n-1) y un morral con capacidad m. Máxima utilidad conseguible:
+answer=mr(m, n) mr(c,i) = 0
+si i=0 = mr(ci-1)
+si i>Ap[i-1]>C = mr(c,i-1) + (mr(c-p[i-1],i-1)+u[i-1])
+si i>Ap[i-1] so Problema del CD {O(m*n) } Se tiene un CD con n> pistas con duraciones d[0],d[1]...., d[n-1) y un casette con capacidad m. Máximo tiempo de grabación: Véase el problema del morral con p=d y u=d.
+Matrix chain multiplication {O(no)} Dada una lista de n matrices con dimensiones d[0]xd[1], d[1] xd[2],...,d(n-1]xd[n], dar el mínimo número de multiplicaciones necesarias para multiplicarlas en secuencia.
+answer=mcm (0,n) mcm(i, j) = 0
+si izj-1
+= (ikli+l5ks - 1:mcm (i, k)+mcm (k. 1)+d[i]*d[k]*d[j]) Mayor Suma alcanzable por subarreglos – Algoritmo de Kadane {O(n) }
+si i<j-1 long kadane (long[] arr) {
+long act=0, r=0; for (long v:arr) {act+=v; if (actor) react; if (act<0) act=0;} return r;
+Mayor suma alcanzable por submatrices - Algoritmo de Kadane {O(n')} long kadane 2D (long[]] mat) {
+int m=mat.lenath n
+A hat.length, n=m==0?0:mat[0].length; long r=0, sumas ( =new long[m][n], arrJ=new long [n]; for (int i=0: i<m
+0! int i=0; i<m; i++) for (int j=0; j<n; j++) sumas[i][j]=mat[i][j]+(i>Q?sumas[i-1][j]:0); for (int il=0; il<m; il++) for (int i2=il; i2<m; i2++) {
+for (int j =0; j<n; ++) arr[i]=sumas (i2][i]-(il>0?sumas (il-1) 11:0); r=Math.max (r, kadane (arr));
+return r;
+Subsecuencia creciente más larga (Longest increasing subsequence) {O(na) } int lisi(long[] arr) {
+int n=arr.length, maxs [ ]=new int[n], res=0,i,j; for (i=0; i<n; res=Math.max(res,maxs[i]), i++)
+for (maxs[i]=1,j=0; j<i; j++) if (arr[i]>arr[jl) maxs[i]=Math.max(maxs[i],maxs[j]+1); return res;
+Subsecuencia creciente más larga (Longest increasing subsequence) {O(n*log2(n))} int lis2(long[] arr) {
+int n=arr.length, res=0; long val[]=new long(n+1]; val[0]=Long.MIN_VALUE; //inds [0]=0 for (long v:arr) { // Sea i el índice de v en arr
+int j=Arrays.binarySearch (val, o, res+1,v); j=(j<0?-j-1:j)-1; //ants[i]=inds [j]; if (j==res | vaval[j+1]) {val[j+1]=v; res=Math.max (res, j+1);} //inds [j+1]=i;
+return res;
