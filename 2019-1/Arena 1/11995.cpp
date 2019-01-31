@@ -13,8 +13,8 @@ queue<int> qu;
 priority_queue<int> pq;
 
 int main(){
-   freopen("11995.in","r",stdin);
-   freopen("11995.out","w",stdout);
+//   freopen("11995.in","r",stdin);
+//   freopen("11995.out","w",stdout);
    string line;
    int c,v,x,n;
    while(scanf("%d",&n)==1){
